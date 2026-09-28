@@ -1,0 +1,7 @@
+partition,subset,tiles,frames,line,block,pit,pit_tiles,frames_shared_with_train
+Random,train,8187,569,8591,5762,948,672,
+Random,val,1754,478,1919,1200,218,157,0.9982896237172177
+Random,test,1755,492,1855,1277,246,168,0.996011396011396
+Source-separated,train,8105,404,8565,5745,969,707,
+Source-separated,val,1792,87,1924,1211,228,140,0.0
+Source-separated,test,1799,87,1876,1283,215,150,0.0

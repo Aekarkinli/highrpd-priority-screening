@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the article below."
+title: "highrpd-priority-screening: maintenance priority screening of pavement distress from high-altitude UAV imagery"
+type: software
+license: MIT
+version: 1.0.0
+date-released: "2026-09-28"
+repository-code: "https://github.com/<owner>/highrpd-priority-screening"
+authors:
+  - family-names: Kesikoglu
+    given-names: Mustafa Hayri
+    orcid: "https://orcid.org/0000-0001-5199-0815"
+    affiliation: "Uşak University"
+  - family-names: Karkınlı
+    given-names: Ahmet Emin
+    orcid: "https://orcid.org/0000-0001-7216-6251"
+    affiliation: "Niğde Ömer Halisdemir University"
+preferred-citation:
+  type: article
+  title: "Maintenance priority screening of pavement distress from high-altitude UAV imagery"
+  authors:
+    - family-names: Kesikoglu
+      given-names: Mustafa Hayri
+    - family-names: Karkınlı
+      given-names: Ahmet Emin
+  journal: "Measurement"
+  year: 2026
+  notes: "Submitted"

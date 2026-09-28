@@ -1,0 +1,11 @@
+torch>=2.12   # backend of ultralytics, install the CUDA build matching your driver
+ultralytics==8.3.161
+numpy>=2.4
+pandas>=3.0
+scipy>=1.17
+scikit-learn>=1.8
+scikit-image>=0.26
+shapely>=2.1
+matplotlib>=3.10
+pillow>=12
+pyyaml

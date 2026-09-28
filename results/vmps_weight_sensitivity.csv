@@ -1,0 +1,6 @@
+scenario,spearman,kendall,band_agreement,top5pct_overlap,critical_share
+Base,1.0,1.0,1.0,1.0,0.1661
+Pit-light,0.9965,0.9779,0.9773,0.9229,0.1619
+Pit-heavy,0.9958,0.9763,0.9587,0.9092,0.1646
+Crack-heavy,0.9966,0.9614,0.9455,0.8784,0.156
+Equal,0.9617,0.8526,0.702,0.8151,0.1244
