@@ -2,11 +2,11 @@
 
 Code, partitions and results for the article
 
-> M. H. Kesikoglu, A. E. Karkınlı, *Maintenance priority screening of pavement distress from high-altitude UAV imagery*, submitted to Measurement (2026).
+> M. H. Kesikoglu, A. E. Karkınlı, *Measuring pavement distress extent and maintenance priority from high-altitude UAV bounding-box detections with uncertainty propagation*, submitted to Measurement (2026).
 
-The study converts bounding-box detections of line cracks, block cracks and pits in high-altitude (50 m) UAV
-imagery into class-specific distress extent proxies, a visual maintenance priority score (VMPS) and section-level
-priorities, and measures how detection errors propagate through that chain. It uses the open HighRPD dataset
+The study treats the chain from bounding-box detections of line cracks, block cracks and pits in high-altitude (50 m) UAV
+imagery to class-specific distress extent proxies, a visual maintenance priority score (VMPS) and section-level
+priorities as a measurement chain, and quantifies how detection errors propagate through it, including an uncertainty budget. It uses the open HighRPD dataset
 with a partition by source group, compares it with the usual random tile partition, and applies the same
 scoring rules to the UAV-PDD2023 dataset.
 
@@ -20,7 +20,7 @@ scoring rules to the UAV-PDD2023 dataset.
 | `figures/` | Figures of the article (PDF and PNG) |
 
 Trained checkpoints are distributed separately as a release asset (`highrpd-priority-screening-weights.zip`,
-about 260 MB). It unpacks into the repository root as `runs/<name>/weights/best.pt` and `runs/<name>/meta.json`,
+about 260 MB, https://github.com/Aekarkinli/highrpd-priority-screening/releases). It unpacks into the repository root as `runs/<name>/weights/best.pt` and `runs/<name>/meta.json`,
 which is all that the evaluation scripts need to reproduce the reported results without training.
 
 ## Data
@@ -51,6 +51,7 @@ Run every script from the repository root.
 | UAV-PDD2023 conversion and tiling | `06_uavpdd_convert.py`, `06b_uavpdd_tiles.py` | `data/uavpdd_tiles/`, `results/uavpdd_tiles_index.csv` |
 | Evaluation of every run | `07_evaluate.py`, `07b_decompose.py`, `07c_eval_queue.sh` | `results/runs/<name>/summary.json`, `decomposition.json` |
 | Fine-tuning on UAV-PDD2023 | `04b_finetune_queue.sh`, `07d_eval_ft.py` | `results/runs/ft_*/summary_ft.json` |
+| Uncertainty budget of the priority score | `15_uncertainty.py` | `results/uncertainty_budget.csv` |
 | Figures and tables | `08_characterize.py`, `09_figures_gt.py`, `13_figures_revised.py`, `10_tables.py` | `figures/`, `paper/tables/` |
 
 The training queue runs the eleven HighRPD configurations of the article sequentially (50 epochs, batch 16,

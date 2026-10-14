@@ -1,0 +1,3 @@
+level,n,repeatability,operating_point,bias,residual,rmse,proxy,reference_ambiguity,combined_reproduction,closure,combined_with_proxy,expanded_k2,p_swap,rel_L_line,rel_A_block,rel_A_pit
+tile,1799,14.223,12.551,-11.19,26.761,29.0,25.855,8.507,20.789,0.777,33.177,66.353,0.114,0.708,0.603,0.408
+section,87,4.618,8.736,-9.912,11.298,14.981,15.531,3.476,10.475,0.927,18.733,37.466,0.114,0.708,0.603,0.408
