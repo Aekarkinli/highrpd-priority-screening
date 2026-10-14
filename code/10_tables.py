@@ -257,4 +257,28 @@ Model & mAP$_{50}$ & line / block / pit & score $\rho$ & Critical recall & score
 \end{tabular*}
 \end{table*}
 """)
+# ---- Table: uncertainty budget
+if os.path.exists('results/uncertainty_budget.csv'):
+    U = pd.read_csv('results/uncertainty_budget.csv', index_col=0)
+    t, s_ = U.loc['tile'], U.loc['section']
+    rows = [f"Repeatability (seed to seed) & A & {t.repeatability:.1f} & {s_.repeatability:.1f} \\\\",
+            f"Operating point (confidence 0.15 to 0.25) & B & {t.operating_point:.1f} & {s_.operating_point:.1f} \\\\",
+            f"Reference ambiguity (line/block label swap, $p$ = {t.p_swap:.2f}) & B & {t.reference_ambiguity:.1f} & {s_.reference_ambiguity:.1f} \\\\",
+            f"\\midrule Combined, reproduction of the reference score & & {t.combined_reproduction:.1f} & {s_.combined_reproduction:.1f} \\\\",
+            f"Observed dispersion after bias removal & & {t.residual:.1f} & {s_.residual:.1f} \\\\",
+            f"Bias (detection minus reference) & & {t.bias:.1f} & {s_.bias:.1f} \\\\",
+            f"\\midrule Proxy approximation (box to pixel-level extent) & B & {t.proxy:.1f} & {s_.proxy:.1f} \\\\",
+            f"Combined, including proxy approximation & & {t.combined_with_proxy:.1f} & {s_.combined_with_proxy:.1f} \\\\",
+            f"Expanded ($k$ = 2) & & {t.expanded_k2:.1f} & {s_.expanded_k2:.1f} \\\\"]
+    w('uncertainty', r"""\begin{table}[t]
+\caption{Uncertainty budget of the detection-based priority score (YOLO11s, source-separated test set) in score units (0--100): standard uncertainties of the tile score and of the section score $S$, their combination, the observed dispersion and bias, and the additional term for the box proxies relative to a pixel-level extent.}\label{tab:budget}
+\begin{tabular*}{\tblwidth}{@{}llcc@{}}
+\toprule
+Component & Type & Tile & Section \\
+\midrule
+""" + '\n'.join(rows) + r"""
+\bottomrule
+\end{tabular*}
+\end{table}
+""")
 print('tables written:', sorted(os.listdir('paper/tables')))
