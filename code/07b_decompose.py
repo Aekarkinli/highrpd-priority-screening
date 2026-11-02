@@ -10,7 +10,7 @@ def iou(a, b):
     iw, ih = max(0, min(ax2, bx2)-max(ax1, bx1)), max(0, min(ay2, by2)-max(ay1, by1)); inter = iw*ih
     return inter/(a[3]*a[4]+b[3]*b[4]-inter+1e-9)
 def run(name):
-    model = YOLO(f'runs/{name}/weights/best.pt'); split_col = 'split_random' if 'random' in name else 'split_source'
+    model = YOLO(f'runs/{name}/weights/best.pt'); split_col = 'split_random' if 'random' in name else ('split_stretch' if 'stretch' in name else 'split_source')
     test = GT[GT[split_col] == 'test'].reset_index(drop=True); paths = [os.path.abspath(f'data/HighRPD/images/{s}.jpg') for s in test.stem]
     pred = {}
     for i in range(0, len(paths), 16):

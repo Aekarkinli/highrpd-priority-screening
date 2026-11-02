@@ -1,0 +1,43 @@
+{
+ "native": {
+  "source_boxes": 3624,
+  "tile_boxes": 6429,
+  "source_boxes_lost": 6,
+  "source_boxes_split": 1930,
+  "tiles": 9756,
+  "tiles_without_annotation": 5848,
+  "zero_shot_share_empty_tiles_with_detection": [
+   0.3735750113999088,
+   0.02280530314766915
+  ]
+ },
+ "gsd_matched": {
+  "source_boxes": 3624,
+  "tile_boxes": 4722,
+  "source_boxes_lost": 0,
+  "source_boxes_split": 994,
+  "tiles": 3252,
+  "tiles_without_annotation": 1217,
+  "zero_shot_share_empty_tiles_with_detection": [
+   0.5212270610791564,
+   0.08325629920395686
+  ]
+ },
+ "finetune_test_tiles_without_annotation": 859,
+ "finetune_test_tiles": 1488,
+ "ft_uav_coco_s123_share_empty_tiles_with_detection": 0.03143189755529686,
+ "ft_uav_coco_s3407_share_empty_tiles_with_detection": 0.013969732246798603,
+ "ft_uav_coco_s42_share_empty_tiles_with_detection": 0.023282887077997673,
+ "ft_uav_highrpd_s42_share_empty_tiles_with_detection": 0.02211874272409779,
+ "ft_uav_stretch_s123_share_empty_tiles_with_detection": 0.03608847497089639,
+ "ft_uav_stretch_s3407_share_empty_tiles_with_detection": 0.024447031431897557,
+ "ft_uav_stretch_s42_share_empty_tiles_with_detection": 0.03958090803259604,
+ "finetune_seq_test_tiles_without_annotation": 737,
+ "finetune_seq_test_tiles": 1284,
+ "ft_uav_seq_coco_s123_share_empty_tiles_with_detection": 0.016282225237449117,
+ "ft_uav_seq_coco_s3407_share_empty_tiles_with_detection": 0.023066485753052916,
+ "ft_uav_seq_coco_s42_share_empty_tiles_with_detection": 0.023066485753052916,
+ "ft_uav_seq_stretch_s123_share_empty_tiles_with_detection": 0.025780189959294438,
+ "ft_uav_seq_stretch_s3407_share_empty_tiles_with_detection": 0.014925373134328358,
+ "ft_uav_seq_stretch_s42_share_empty_tiles_with_detection": 0.023066485753052916
+}

@@ -46,7 +46,7 @@ def eval_run(name, ext=True):
     outdir = f'results/runs/{name}'; os.makedirs(outdir, exist_ok=True)
     if os.path.exists(f'{outdir}/summary.json'): return json.load(open(f'{outdir}/summary.json'))
     meta = json.load(open(f'runs/{name}/meta.json')); model = YOLO(f'runs/{name}/weights/best.pt')
-    split_col = 'split_random' if 'random' in meta['data'] else 'split_source'
+    split_col = 'split_random' if 'random' in meta['data'] else ('split_stretch' if 'stretch' in meta['data'] else 'split_source')
     S = dict(name=name, **meta, split=split_col)
     # 1 detection metrics on the test split
     v = model.val(data=meta['data'], split='test', imgsz=640, batch=8, plots=False, verbose=False, project='runs/_val', name=name, exist_ok=True, half=True)

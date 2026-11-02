@@ -1,0 +1,53 @@
+{
+ "frames": 539,
+ "pairs": 72143,
+ "flagged_any_rotation": 4,
+ "flagged_main_rule": 0,
+ "max_inliers": 286,
+ "inliers_p99": 33.0,
+ "inliers_p999": 57.0,
+ "pairs_ge_12_inliers": 9812,
+ "by_subset": "{('test', 'train'): 10139, ('test', 'val'): 4579, ('train', 'test'): 19824, ('train', 'val'): 23684, ('val', 'test'): 3306, ('val', 'train'): 10611}",
+ "flagged": [
+  {
+   "src_a": "DJI_20230707095119_0325",
+   "src_b": "DJI_20230707095125_0331",
+   "split_a": "val",
+   "split_b": "train",
+   "matches": 89,
+   "inliers": 31,
+   "scale": 0.9907436733357669,
+   "rot_deg": 6.470037534266386
+  },
+  {
+   "src_a": "DJI_20230707095120_0326",
+   "src_b": "DJI_20230707095125_0331",
+   "split_a": "val",
+   "split_b": "train",
+   "matches": 348,
+   "inliers": 286,
+   "scale": 0.9920301634239688,
+   "rot_deg": 6.406381492315582
+  },
+  {
+   "src_a": "DJI_20230707095121_0327",
+   "src_b": "DJI_20230707095125_0331",
+   "split_a": "val",
+   "split_b": "train",
+   "matches": 218,
+   "inliers": 162,
+   "scale": 0.990914047153349,
+   "rot_deg": 6.625826369858248
+  },
+  {
+   "src_a": "DJI_20230707095121_0327",
+   "src_b": "DJI_20230707095126_0332",
+   "split_a": "val",
+   "split_b": "train",
+   "matches": 138,
+   "inliers": 86,
+   "scale": 0.9923116883120049,
+   "rot_deg": 6.84772503867354
+  }
+ ]
+}

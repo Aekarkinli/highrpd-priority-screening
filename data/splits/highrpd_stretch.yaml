@@ -1,0 +1,8 @@
+names:
+  0: line
+  1: block
+  2: pit
+path: /ABSOLUTE/PATH/TO/data/splits  # Ultralytics needs an absolute path here; code/01_make_splits.py writes it for your machine
+test: stretch_test.txt
+train: stretch_train.txt
+val: stretch_val.txt

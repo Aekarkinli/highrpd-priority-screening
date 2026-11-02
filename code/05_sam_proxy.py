@@ -3,6 +3,14 @@ import sys, os, json, numpy as np, pandas as pd
 sys.path.insert(0,'code'); from inventory import read_yolo_txt
 from ultralytics import SAM
 from skimage.morphology import skeletonize
+from scipy import ndimage as ndi
+def skel_length(sk):
+    """Length of an eight-connected skeleton in pixels: orthogonal steps count 1, diagonal steps sqrt(2); no pruning."""
+    y, x = np.nonzero(sk); P = set(zip(y.tolist(), x.tolist())); L = 0.0
+    for i, j in P:
+        for di, dj, w in ((0, 1, 1.0), (1, 0, 1.0), (1, 1, 2 ** 0.5), (1, -1, 2 ** 0.5)):
+            if (i + di, j + dj) in P: L += w
+    return L
 from scipy.ndimage import rotate
 from PIL import Image
 rng=np.random.default_rng(7)
@@ -19,16 +27,16 @@ def main():
         img=np.asarray(Image.open(f'data/HighRPD/images/{r.stem}.jpg').convert('RGB'))
         boxes=read_yolo_txt(f'data/HighRPD/labels/{r.stem}.txt')
         px=[[ (x-w/2)*S,(y-h/2)*S,(x+w/2)*S,(y+h/2)*S ] for (_,x,y,w,h) in boxes]
-        res=model(img,bboxes=px,verbose=False)[0]
+        res=model(img,bboxes=px,verbose=False,device=os.environ.get('SAM_DEVICE','0'))[0]
         m=res.masks.data.cpu().numpy().astype(bool) if res.masks is not None else np.zeros((len(px),S,S),bool)
         for j,(b,bx) in enumerate(zip(boxes,px)):
             mk=m[j].copy(); x1,y1,x2,y2=[int(round(v)) for v in bx]
             crop=np.zeros_like(mk); crop[max(0,y1):y2,max(0,x1):x2]=True; mk&=crop   # restrict mask to its prompt box
-            area=mk.sum()/(S*S); w,h=b[3],b[4]
+            area=mk.sum()/(S*S); w,h=b[3],b[4]; ncomp=int(ndi.label(mk,structure=np.ones((3,3)))[1])
             d=dict(stem=r.stem,inst=j,cls=b[0],w=w,h=h,bbox_area=w*h,bbox_diag=np.hypot(w,h)/np.sqrt(2),mask_area=area,
-                   mask_fill=area/(w*h) if w*h>0 else np.nan)
+                   mask_fill=area/(w*h) if w*h>0 else np.nan,n_components=ncomp)
             if b[0]==0 and mk.sum()>0:
-                sk=skeletonize(mk); d['skel_len']=sk.sum()/(S*np.sqrt(2))
+                sk=skeletonize(mk); d['skel_len']=skel_length(sk)/(S*np.sqrt(2)); d['skel_px']=int(sk.sum())
                 # orientation sensitivity: rotate the mask, recompute axis-aligned bbox
                 ys,xs=np.where(mk); sub=mk[ys.min():ys.max()+1,xs.min():xs.max()+1]
                 pad=int(np.hypot(*sub.shape))+2; can=np.zeros((2*pad,2*pad),bool); can[pad-sub.shape[0]//2:pad-sub.shape[0]//2+sub.shape[0],pad-sub.shape[1]//2:pad-sub.shape[1]//2+sub.shape[1]]=sub

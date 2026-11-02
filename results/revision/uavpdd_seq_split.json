@@ -1,0 +1,46 @@
+{
+ "block_size": 8,
+ "buffer_ids": 3,
+ "subsets": [
+  {
+   "split_seq": "drop",
+   "tiles": 1164,
+   "views": 30,
+   "line": 761,
+   "block": 54,
+   "pit": 12,
+   "empty": 659
+  },
+  {
+   "split_seq": "test",
+   "tiles": 1284,
+   "views": 32,
+   "line": 880,
+   "block": 59,
+   "pit": 12,
+   "empty": 737
+  },
+  {
+   "split_seq": "train",
+   "tiles": 6144,
+   "views": 145,
+   "line": 3671,
+   "block": 244,
+   "pit": 54,
+   "empty": 3749
+  },
+  {
+   "split_seq": "val",
+   "tiles": 1164,
+   "views": 29,
+   "line": 639,
+   "block": 40,
+   "pit": 3,
+   "empty": 703
+  }
+ ],
+ "checked_pairs": 2139,
+ "flagged_pairs": 0,
+ "max_inliers": 38,
+ "flagged": []
+}

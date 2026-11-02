@@ -5,11 +5,12 @@ feats=[]
 for r in df.itertuples():
     f=tile_features(read_yolo_txt(f'data/HighRPD/labels/{r.stem}.txt')); f['stem']=r.stem; feats.append(f)
 F=pd.DataFrame(feats); df=df.merge(F,on='stem')
-tr=df[df.split_source=='train']; ref=fit_reference(tr); ref['P95_raw']=float(np.percentile(vmps_raw(tr,ref),95)); json.dump(ref,open('results/reference_scale_p95.json','w'),indent=1)
+SPLIT='split_stretch'   # reference scales are fitted on the training subset of the stretch-separated partition
+tr=df[df[SPLIT]=='train']; ref=fit_reference(tr); ref['P95_raw']=float(np.percentile(vmps_raw(tr,ref),95)); json.dump(ref,open('results/reference_scale_p95.json','w'),indent=1)
 print('reference (P95 of train, class present):',ref)
 df['VMPS_raw']=vmps_raw(df,ref); df['VMPS']=vmps(df,ref); df['priority']=band(df.VMPS)
 df.to_csv('results/tiles_gt_inventory.csv',index=False)
-print(df.groupby('split_source').priority.value_counts(normalize=True).unstack().round(3))
+print(df.groupby(SPLIT).priority.value_counts(normalize=True).unstack().round(3))
 print(df.VMPS.describe().round(2))
 print('by dominant content:'); 
 for k in ['N_line','N_block','N_pit']: print(k,'only:',df[(df[['N_line','N_block','N_pit']]>0).sum(1).eq(1)&(df[k]>0)].VMPS.describe()[['mean','50%','max']].round(1).to_dict())

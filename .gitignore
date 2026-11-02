@@ -1,0 +1,16 @@
+# datasets (download from Mendeley Data and Zenodo, see README)
+/data/HighRPD/
+/data/external/
+/data/uavpdd_yolo/
+/data/uavpdd_tiles/
+/data/splits/*.cache
+
+# training outputs and checkpoints (published as a release asset)
+/runs/
+*.pt
+
+# editor and cache files
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

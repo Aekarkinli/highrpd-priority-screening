@@ -1,0 +1,25 @@
+{
+ "target_tiles": 7371,
+ "tiles": 7356,
+ "frames": 368,
+ "frames_full": 404,
+ "class_counts": [
+  7903,
+  5008,
+  906
+ ],
+ "class_share": [
+  0.572,
+  0.3625,
+  0.0656
+ ],
+ "stretch_class_share": [
+  0.5735,
+  0.3587,
+  0.0679
+ ],
+ "l1_distance": 0.007539089768350729,
+ "common_frames": 24,
+ "common_frames_overlapping_matched_train": 18,
+ "common_frames_overlapping_full_train": 18
+}
